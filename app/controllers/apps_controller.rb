@@ -1,4 +1,7 @@
 class AppsController < ApplicationController
+  
+  before_filter :require_login, :only => [:new, :create]
+  
   # GET /apps
   # GET /apps.json
   def index

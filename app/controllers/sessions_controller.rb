@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(params[:password])
         session[:uid] = user.id
-        redirect_to apps_url, notice: "Hello, #{user.name}"
+        redirect_to apps_url, notice: "Signed in as #{user.email}"
       else
         flash[:notice] = "Unknown email address or password"
         render :new
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_url notice: "Goodbye!"
+    redirect_to root_url notice: "Sign-out successful!"
   end
 end
